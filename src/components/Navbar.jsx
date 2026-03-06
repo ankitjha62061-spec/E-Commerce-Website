@@ -12,6 +12,7 @@ const [visible, setVisible] =useState(false)
 <img src={assets.logo} className='w-36' alt="" />
 
 <ul className='hidden sm:flex gap-5 text-sm text-gray-700 '>
+  
 
 <NavLink to='/home' className='flex flex-col items-center gap-1'> 
 <p>HOME</p>
@@ -72,7 +73,6 @@ const [visible, setVisible] =useState(false)
 
 {/* slidebar for small screen  */}
 
-{/* <div className={`absolute  top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full': 'w-0'}`}> */}
   <div className={`absolute top-0 right-0 bottom-0  overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
 
 <div className='flex flex-col text-gray-600'>
