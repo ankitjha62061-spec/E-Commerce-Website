@@ -1,5 +1,6 @@
 import React from 'react'
 import Hero from '../components/Hero'
+import Collection from './Collection'
 
 const Home = () => {
   return (
@@ -7,7 +8,11 @@ const Home = () => {
         
       
 <Hero/>
-        </div>
+<Collection/>
+
+
+
+  </div>
   )
 }
 
