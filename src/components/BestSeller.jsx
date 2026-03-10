@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from './Title';
+import ProductItem from './ProductItem';
 
 const BestSeller = () => {
 const {products} = useContext(ShopContext);
@@ -17,12 +18,29 @@ const [bestSeller,setBestSeller] =  useState([]);
     <div className='m-10'>
         <div className='text-center text-3xl py-8'>
            <Title text1={'BEST'} text2={'SELLERS'}/>
-           <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam asperiores voluptatem possimus provident numquam eaque ab aperiam alias, atque vel corrupti error aliquid quisquam dolor ratione praesentium doloremque dicta laudantium!
+           <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-black-600'>
            
-           </p>
+Discover our most popular products loved by customers for their quality, style, and reliability. 
+These best-selling items are carefully selected based on customer preferences and high demand. 
+Whether you are looking for something trendy or something practical, our best sellers offer the 
+perfect combination of design, comfort, and value. Explore the collection and find the products 
+that everyone is talking about.
+ </p>
+</div>
 
-        </div>
+<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
+{
+    bestSeller.map((item,index)=>(
+        <ProductItem key={index} 
+        id={item._id} 
+        name={item.name}
+         image={item.image} 
+         price={item.price}/>
+
+    ))
+}
+
+</div>
 
     </div>
   )
