@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from '../components/Hero'
-import Collection from './Collection'
+// import Collection from './Collection'
 import LatestCollection from '../components/LatestCollection'
 import BestSeller from '../components/BestSeller'
 import OurPolicy from '../components/OurPolicy'
@@ -12,7 +12,7 @@ const Home = () => {
         
       
 <Hero/>
-<Collection/>
+{/* <Collection/> */}
 <LatestCollection/>
 <BestSeller/>
 <OurPolicy/>

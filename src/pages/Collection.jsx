@@ -15,21 +15,30 @@ const [showFilter,setShowFilter] = useState(false);
 <p className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS</p>
 {/* category filter */}
 
-<div className={'border border-gray-300 pl-5 py-3 mt-6 ${}'}>
-
-</div>
-
-</div>
-<div className='min-w-60'>
-
-<p>
-
+<div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? '' : 'hidden'} sm:block`}> 
+  <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
+<div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
+<p className='flex gap-2'>
+  <input className='w-3 '  type="checkbox" value={'Men'} /> Men
 </p>
+
+<p className='flex gap-2'>
+  <input className='w-3 '  type="checkbox" value={'Woman'} /> Woman
+</p>
+
+<p className='flex gap-2'>
+  <input className='w-3 '  type="checkbox" value={'Kids'} /> Kids
+</p>
+
 </div>
+</div>
+ {/* SubCategory Filter  */}
 
 
 
-    </div>
+
+</div>
+</div>
   )
 }
 

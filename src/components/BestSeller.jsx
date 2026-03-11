@@ -47,3 +47,4 @@ that everyone is talking about.
 }
 
 export default BestSeller
+
