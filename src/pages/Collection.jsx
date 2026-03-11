@@ -11,7 +11,11 @@ const { products } = useContext(ShopContext);
 const [showFilter, setShowFilter] = useState(false);
 const [filterProducts, setFilterProducts] = useState([]);
 const [category, setCategory] = useState([]);
-const [SubCategory, setSubCategory] = useState([]);
+const [subCategory, setSubCategory] = useState([]);
+const [sortType,setSortType] = useState("relevant");
+
+
+
 
 
 const toggleCategory = (e) => {
@@ -28,7 +32,7 @@ const toggleCategory = (e) => {
 
 const toggleSubCategory = (e) => {
 
-  if (SubCategory.includes(e.target.value)) {
+  if (subCategory.includes(e.target.value)) {
     setSubCategory(prev => prev.filter(item => item !== e.target.value))
   } 
   else {
@@ -48,9 +52,9 @@ const applyFilter = () => {
     )
   }
 
-  if (SubCategory.length > 0) {
+  if (subCategory.length > 0) {
     productsCopy = productsCopy.filter(item =>
-      SubCategory.includes(item.subCategory)
+      subCategory.includes(item.subCategory)
     )
   }
 
@@ -60,17 +64,44 @@ const applyFilter = () => {
 
 
 
+  // for  prdoucts high and low prie 
+const sortProduct = () => {
+
+let fpCopy = filterProducts.slice();
+
+switch (sortType) {
+
+  case 'low-high':
+    setFilterProducts([...fpCopy].sort((a, b) => a.price - b.price));
+    break;
+
+  case 'high-low':
+    setFilterProducts([...fpCopy].sort((a,b)=> b.price - a.price));
+    break;
+
+  default:
+    applyFilter();
+    break;
+
+}
+
+}
+
 
 useEffect(() => {
   applyFilter();
-}, [category, SubCategory])
+}, [category, subCategory, products])
+
+
+useEffect(()=>{
+  sortProduct();
+},[sortType])
 
 
 
 return (
 <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
 
-{/* Filters */}
 
 <div className='min-w-60'>
 
@@ -79,6 +110,7 @@ onClick={() => setShowFilter(!showFilter)}
 className='my-2 text-xl flex items-center cursor-pointer gap-2'
 >
 
+FILTERS
 
 <img
 className={`h-3 sm:hidden ${showFilter ? 'rotate-90' : ''}`}
@@ -141,7 +173,6 @@ alt=""
 </div>
 
 
-{/* Right Side */}
 
 <div className='flex-1'>
 
@@ -149,11 +180,10 @@ alt=""
 
 <Title text1={'ALL'} text2={'COLLECTIONS'} />
 
-{/* Sort */}
 
-<select className='border-2 border-gray-300 text-sm px-2'>
+<select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
 
-<option value="relavent">Sort by: Relevant</option>
+<option value="relevant">Sort by: Relevant</option>
 <option value="low-high">Sort by: Low to High</option>
 <option value="high-low">Sort by: High to Low</option>
 
@@ -162,23 +192,13 @@ alt=""
 </div>
 
 
-{/* Product Grid */}
 
 <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
 
 {
 filterProducts.map((item, index) => (
 
-<ProductItem
-key={index}
-name={item.name}
-id={item._id}
-price={item.price}
-image={item.image}
-/>
-
-))
-}
+<ProductItem key={index} name={item.name} id={item._id}  price={item.price}image={item.image}/>))}
 
 </div>
 
