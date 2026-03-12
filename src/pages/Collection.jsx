@@ -6,16 +6,13 @@ import ProductItem from '../components/ProductItem';
 
 const Collection = () => {
 
-const { products } = useContext(ShopContext);
+const { products,search,showSearch } = useContext(ShopContext);
 
 const [showFilter, setShowFilter] = useState(false);
 const [filterProducts, setFilterProducts] = useState([]);
 const [category, setCategory] = useState([]);
 const [subCategory, setSubCategory] = useState([]);
 const [sortType,setSortType] = useState("relevant");
-
-
-
 
 
 const toggleCategory = (e) => {
@@ -28,8 +25,6 @@ const toggleCategory = (e) => {
   }
 
 }
-
-
 const toggleSubCategory = (e) => {
 
   if (subCategory.includes(e.target.value)) {
@@ -45,6 +40,15 @@ const toggleSubCategory = (e) => {
 const applyFilter = () => {
 
   let productsCopy = products.slice();
+
+
+if (showSearch && search) {
+  productsCopy = productsCopy.filter(item =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  )
+}
+
+
 
   if (category.length > 0) {
     productsCopy = productsCopy.filter(item =>
@@ -64,7 +68,8 @@ const applyFilter = () => {
 
 
 
-  // for  prdoucts high and low prie 
+
+  // for  prdoucts high and low price 
 const sortProduct = () => {
 
 let fpCopy = filterProducts.slice();
@@ -90,7 +95,7 @@ switch (sortType) {
 
 useEffect(() => {
   applyFilter();
-}, [category, subCategory, products])
+}, [category, subCategory, products,search,showSearch])
 
 
 useEffect(()=>{
