@@ -9,14 +9,26 @@ const {search, setSearch, showSearch, setShowSearch} = useContext(ShopContext);
 const [visible,setVisible] = useState(false)
 const location = useLocation();
 
+
+// useEffect(() => {
+
+//   const allowedPages = ['/', '/collection', '/home'];
+
+//   if (allowedPages.includes(location.pathname)) {
+//     setVisible(true);
+//   } else {
+//     setVisible(false);
+//   }
+
+// }, [location]);
+
+
+
 useEffect(()=>{
-    // const allowedPages = ["/", "/collection", "/about"   ]
-    // if( allowedPages.includes (location.pathname)){}
 if (location.pathname.includes('collection',)){
     setVisible(true)
 
 }
-
 else{
     setVisible(false)
 }
