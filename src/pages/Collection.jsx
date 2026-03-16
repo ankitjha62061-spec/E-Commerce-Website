@@ -55,6 +55,7 @@ if (showSearch && search) {
       category.includes(item.category)
     )
   }
+  
 
   if (subCategory.length > 0) {
     productsCopy = productsCopy.filter(item =>

@@ -55,7 +55,7 @@ const Product = () => {
           </div>
 
           {/* Main image */}
-          <div className='w-full sm:w-[60%]'>
+          <div className='w-full sm:w-[80]'>
             <img className='w-full h-auto'  src={image} alt="" />
           </div>
          </div>
@@ -110,11 +110,12 @@ const Product = () => {
 
 
 <div className='mt-20'>
-  <div className='flex'>
- <b className='border px-5 py-3 text-sm'> Description</b>
-  <p className='border px-5 py-3 text-sm'> Reviews</p>
+  <div className='flex gap-4 border-b border-gray-300 pb-3 mb-6 '>
+ <b className='px-6 py-3 text-sm font-semibold border border-gray-300 rounded-t-lg bg-gray-100 hover:bg-gray-200 transition-all duration-200'> Description</b>  
+
+  <p className='px-6 py-3 text-sm text-gray-600 border border-gray-300 rounded-t-lg hover:bg-gray-100 transition-all duration-200'> Reviews</p>
 </div>
-<div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500'>
+<div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-10'>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, suscipit. Doloremque corporis similique nihil odit aut itaque, veniam porro magni nesciunt eaque, minima nobis eligendi nemo quidem vitae aspernatur incidunt!</p>
 
 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque rerum aspernatur dolorem, quasi ullam eligendi ex possimus. Ipsum possimus nostrum provident minus temporibus ad maiores molestias, hic consequuntur. Deleniti, impedit.</p>
