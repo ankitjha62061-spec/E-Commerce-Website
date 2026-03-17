@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title';
 import { assets } from '../assets/assets';
+import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
 
-const {products, currency,  cartItems,updateQuantity } = useContext(ShopContext);
+const {products, currency,  cartItems,updateQuantity, navigate } = useContext(ShopContext);
 
 
 const [cartData, setCartData] = useState([]);
@@ -58,7 +59,7 @@ console.log(products)
           </p>
 
 
-{/*  P pirce and size */}
+{/*  P price  and size */}
 
 
 <div className='flex items-center gap-5 mt-2'>
@@ -68,18 +69,19 @@ console.log(products)
 
         </div>
       </div>
-{/* <input onChange={(e)=> e.target.value === ''  e.target.value === '0' ? null : updateQuantity} (item._id,item.size,Number(e.target.value)) className='border max-w-10 sm:max-w-20 px-1 sm:px-2' type="number" min={1} defaultValue={item.quantity} /> */}
 
 
-<input
-  onChange={(e) =>
-    e.target.value === '' || e.target.value === '0'
-      ? null
-      : updateQuantity(item._id, item.size, Number(e.target.value))
-  }
-  className='border max-w-10 sm:max-w-20 px-1 sm:px-2'
-  type="number"
-  min={1}
+
+
+
+{/* 
+<input onChange={(e) => {updateQuantity(item._id, item.size, Number(e.target.value));}}
+  className='border max-w-10 sm:max-w-20 px-1 sm:px-2' type="number" min={1}
+  defaultValue={item.quantity}
+/> */}
+
+
+<input className='border max-w-10 sm:max-w-20 px-1 sm:px-2' type="number" min={1}
   defaultValue={item.quantity}
 />
 
@@ -91,6 +93,17 @@ console.log(products)
 })
 }
 </div>
+
+
+<div className='  w-full sm:w-[400px]'>
+  <CartTotal/>
+
+<div className='w-full text-end'>
+  <button onClick={()=>navigate('/place-order')} className='bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHEKCOUT</button>
+</div>
+
+</div>
+
 </div>
   )
 }
