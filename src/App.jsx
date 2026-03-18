@@ -23,7 +23,7 @@ const App = () => {
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
 
 <ToastContainer position='top-right' 
-autoClose={3000}/>     
+autoClose={1000}/>     
 
        <Navbar />
       <SearchBar />

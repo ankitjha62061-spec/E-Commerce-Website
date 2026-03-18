@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
+import { assets } from '../assets/assets'
+import { ShopContext } from '../context/ShopContext'
 
 const PlaceOrder = () => {
+
+
+const {navigate} = useContext(ShopContext)
+
+const [method,setMethod] = useState ('code');
+
   return (
     <div className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t' > 
       
@@ -41,7 +49,6 @@ const PlaceOrder = () => {
 
  {/* Right Side */}
 
-
      <div className='mt-8'>
 
       <div className='mt-8 min-w-80'>
@@ -53,32 +60,45 @@ const PlaceOrder = () => {
 
   <Title text1={'PAYMENTS'} text2={'METHODS'} />
 
+
 {/* Payment method */}
+<div className='flex flex-col lg:flex-row gap-3'>
 
-<div className='flex gap-3 flex-col lg:flex-row'>
-
-  <div className='flex items-center gap-3 border-2 p-2 px-3 cursor-pointer'>
-     <p className={`min-w-3.5 h-3.5 border rounded-full`} ></p>
-   </div>
-
-
-
-  <div className='flex items-center gap-3 border-2 p-2 px-3 cursor-pointer'>
-    <p className={`min-w-3.5 h-3.5 border rounded-full`} ></p>
+  
+  
+  <div   onClick={()=>(setMethod('stripe'))} className='flex items-center gap-3 border rounded-md p-3 cursor-pointer hover:border-black transition'>
+     <span className={`w-4 h-4 border rounded-full ${ method === 'stripe' ? 'bg-green-400' : ''}`}></span>
+    <img className='h-5 object-contain' src={assets.stripe_logo} alt="Stripe" />
   </div>
 
 
-  <div className='flex items-center gap-3 border-2 p-2 px-3 cursor-pointer'>
-     <p className={`min-w-3.5 h-3.5 border rounded-full`} ></p>
-    </div>
 
-<button className='bg-black border text-white text-sm my-8 px-8 py-3'> PLACE ORDER </button>
 
-</div>
+  <div  onClick={()=>(setMethod('razorpay'))}  className='flex items-center gap-3 border rounded-md p-3 cursor-pointer hover:border-black transition'>
+    <span className={`w-4 h-4 border rounded-full ${ method === 'razorpay' ? 'bg-green-400' : ''}`}></span>
+    <img className='h-5 object-contain' src={assets.razorpay_logo} alt="Razorpay" />
+  </div>
 
+
+
+
+  <div   onClick={()=>(setMethod('cod'))} className='flex items-center gap-3 border rounded-md p-3 cursor-pointer hover:border-black transition'>
+    <span className={`w-4 h-4 border rounded-full ${method === 'cod' ? 'bg-green-400' : ''} `}></span>
+    <p className='text-gray-600 text-sm font-medium'>
+      CASH ON DELIVERY
+    </p>
+  </div>
  </div>
 
-     </div>
+
+<div className='w-full text-end mt-8 '>
+  <button onClick={()=>navigate('/orders')} className='bg-black text-white px-16 py-3 text-sm' > PLACE ORDER </button>
+</div>
+
+
+
+</div>
+ </div>
 
       </div>
   )
