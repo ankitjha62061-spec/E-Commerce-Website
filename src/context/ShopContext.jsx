@@ -46,7 +46,6 @@ const addToCart = async (itemId, size) => {
 
 
 
-
 const getCartCount = () => {
   let totalCount = 0;
 
@@ -55,7 +54,7 @@ const getCartCount = () => {
       const quantity = cartItems[product][size];
 
       if (quantity > 0) {
-        totalCount += quantity;
+        totalCount += 1; 
       }
     }
   }
@@ -64,14 +63,13 @@ const getCartCount = () => {
 };
 
 
-
 const updateQuantity = async (itemId,size,quantity) =>{
 
   let cartData = structuredClone(cartItems);
 
   cartData [itemId][size] = quantity;
 
-  // setCartItems(cartData);
+  setCartItems(cartData);
 
 
 }
